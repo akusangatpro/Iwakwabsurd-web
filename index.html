@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iwakwabsurd Studio | Retro Arcade Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --bg-dark: #120012;
+        }
+
+        body { 
+            font-family: 'VT323', monospace; 
+            background-color: var(--bg-dark); 
+            color: #fff;
+            overflow-x: hidden;
+            letter-spacing: 1px;
+        }
+
+        /* CRT Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 100;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .crt-monitor {
+            border: 15px solid #333;
+            border-radius: 40px;
+            position: relative;
+            background: #000;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.2);
+        }
+
+        .retro-text {
+            color: var(--neon-blue);
+            text-shadow: 3px 3px var(--neon-pink);
+        }
+
+        .retro-border {
+            border: 4px double var(--neon-blue);
+            box-shadow: 5px 5px 0px var(--neon-pink);
+        }
+
+        .retro-btn {
+            background: var(--neon-pink);
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 4px 4px 0px #800080;
+            transition: all 0.1s;
+            display: inline-block;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .retro-btn:active {
+            box-shadow: 0px 0px 0px;
+            transform: translate(4px, 4px);
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+
+        .flicker {
+            animation: flicker 0.1s infinite;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            background: var(--neon-blue);
+            color: black;
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="marquee mb-8">
+        <div class="marquee-content">
+            +++ IWAKWABSURD STUDIO: SPESIALIS GAME BURIK +++ CEK GAME KAMI DI ITCH.IO +++ JANGAN LUPA SUBSCRIBE YT +++
+        </div>
+    </div>
+
+    <!-- Main CRT Container -->
+    <div class="max-w-6xl mx-auto crt-monitor p-6 md:p-12 overflow-hidden">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-20 border-b-4 border-dotted border-gray-700 pb-6">
+            <div>
+                <h1 class="text-4xl md:text-6xl retro-text uppercase italic">IWAKWABSURD</h1>
+                <p class="text-xl text-yellow-400">[ VER 1.0.7 - NO_CONTACT ]</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://iwakwabsurd.itch.io" target="_blank" class="text-3xl hover:text-pink-500" title="Itch.io"><i class="fab fa-itch-io"></i></a>
+                <a href="https://youtube.com/@iwakwabsurd" target="_blank" class="text-3xl hover:text-pink-500" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+            <div class="flicker">
+                <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+                    INSERT COIN <br> TO PLAY <br> <span class="text-yellow-400">OUR GAMES.</span>
+                </h2>
+                <p class="text-2xl text-gray-400 mb-8 leading-relaxed">
+                    Markas besar game burik. Kami bikin game yang visualnya bikin mata sakit tapi kalau nggak dimainin malah kepikiran. Cek koleksi kami di Itch.io!
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="https://iwakwabsurd.itch.io" target="_blank" class="retro-btn text-2xl">Main di Itch.io</a>
+                    <a href="https://youtube.com/@iwakwabsurd" target="_blank" class="retro-btn bg-cyan-500 text-2xl" style="box-shadow: 4px 4px 0px #008080;">Nonton YT</a>
+                </div>
+            </div>
+            <div class="retro-border p-2 bg-zinc-900">
+                <div class="bg-black p-4 text-center">
+                    <div class="text-8xl mb-4">🐟</div>
+                    <p class="text-green-500 mb-2">> CONNECTING TO ITCH.IO...</p>
+                    <p class="text-green-500">> FETCHING BURIK_DATA...</p>
+                    <p class="text-green-500">> STATUS: READY TO PLAY</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Karya Section -->
+        <section id="karya" class="mb-24">
+            <h2 class="text-4xl text-center mb-12 retro-text">-- THE BURIK COLLECTION --</h2>
+            <div class="retro-border p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-zinc-800 border-2 border-white aspect-square flex flex-col items-center justify-center p-4">
+                    <i class="fas fa-gamepad text-8xl mb-4 text-gray-600"></i>
+                    <p class="text-gray-500 italic text-center text-xl">[ VISIT_ITCH_FOR_PREVIEW ]</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl mb-4 text-yellow-400 uppercase">Koleksi Game Kita</h3>
+                    <p class="text-2xl mb-6 text-gray-300">
+                        Semua hasil eksperimen, kegagalan, dan keberuntungan ada di satu tempat. Klik tombol di bawah untuk masuk ke galeri game Iwakwabsurd.
+                    </p>
+                    <ul class="text-xl space-y-2 mb-8 text-cyan-300">
+                        <li>> Platform: Itch.io</li>
+                        <li>> Status: Bertebaran</li>
+                        <li>> Price: Free (Probably)</li>
+                    </ul>
+                    <a href="https://iwakwabsurd.itch.io" target="_blank" class="retro-btn w-full text-2xl">Buka Itch.io Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t-4 border-double border-gray-700 pt-10 text-center">
+            <p class="text-3xl text-pink-500 mb-4 font-bold">IWAKWABSURD STUDIO</p>
+            <p class="text-gray-500 text-xl">GAMING IS NOT A CRIME, BUT BURIK IS A CHOICE.</p>
+            <div class="mt-8 text-gray-700">PRESS ALT+F4 TO ESCAPE REALITY</div>
+        </footer>
+
+    </div>
+
+    <p class="text-center mt-8 text-gray-600 text-sm italic">Designed for CRT Monitors | Optimized for Itch.io Integration</p>
+
+</body>
+</html>
